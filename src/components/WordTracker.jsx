@@ -131,7 +131,7 @@ export default function WordTracker() {
                   if (!v) return ''
                   const m = v.match(/(\d+)\s+(\w+)\s+(\d{4})/)
                   if (!m) return v.slice(0, 7)
-                  return `${m[2].slice(0,3)} '${m[3].slice(2)}`
+                  return `${m[1]} ${m[2].slice(0,3)} ${m[3]}`
                 }}
                 interval={Math.floor(data.length / 8)}
               />
