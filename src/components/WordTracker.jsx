@@ -126,7 +126,13 @@ export default function WordTracker() {
                 dataKey="pub_date"
                 tick={{ fill: '#555550', fontSize: 10, fontFamily: 'DM Mono' }}
                 #tickFormatter={v => v ? v.slice(0, 7) : ''}
-                tickFormatter={v => v ? new Date(v).toLocaleDateString('en-US', {month:'short', year:'2-digit'}) : ''}
+                #tickFormatter={v => v ? new Date(v).toLocaleDateString('en-US', {month:'short', year:'2-digit'}) : ''}
+                tickFormatter={v => {
+                  if (!v) return ''
+                  const m = v.match(/(\d+)\s+(\w+)\s+(\d{4})/)
+                  if (!m) return v.slice(0, 7)
+                  return `${m[2].slice(0,3)} '${m[3].slice(2)}`
+                }}
                 interval={Math.floor(data.length / 8)}
               />
               <YAxis
