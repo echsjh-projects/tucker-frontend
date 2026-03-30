@@ -30,7 +30,8 @@ export default function EpisodeFreq() {
   useEffect(() => {
     fetchEpisodes()
       .then(eps => {
-        const done = eps.filter(e => e.scraped === 1)
+        #const done = eps.filter(e => e.scraped === 1)
+        const done = eps.filter(e => e.scraped === 1 && e.word_count > 0)
         setEpisodes(done)
         if (done.length > 0) setSelectedId(String(done[0].id))
       })
