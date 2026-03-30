@@ -125,15 +125,16 @@ export default function WordTracker() {
               <XAxis
                 dataKey="pub_date"
                 tick={{ fill: '#555550', fontSize: 10, fontFamily: 'DM Mono' }}
-                #tickFormatter={v => v ? v.slice(0, 7) : ''}
-                #tickFormatter={v => v ? new Date(v).toLocaleDateString('en-US', {month:'short', year:'2-digit'}) : ''}
                 tickFormatter={v => {
                   if (!v) return ''
                   const m = v.match(/(\d+)\s+(\w+)\s+(\d{4})/)
                   if (!m) return v.slice(0, 7)
                   return `${m[1]} ${m[2].slice(0,3)} ${m[3]}`
                 }}
-                interval={Math.floor(data.length / 8)}
+                interval={Math.floor(data.length / 6)}
+                angle={-35}
+                textAnchor="end"
+                height={60}
               />
               <YAxis
                 tick={{ fill: '#555550', fontSize: 11, fontFamily: 'DM Mono' }}
