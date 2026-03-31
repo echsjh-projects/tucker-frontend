@@ -127,12 +127,9 @@ export default function WordTracker() {
                 tick={{ fill: '#555550', fontSize: 10, fontFamily: 'DM Mono' }}
                 tickFormatter={v => {
                   if (!v) return ''
-                  // This pattern is more flexible for various date string positions
-                  const m = v.match(/(\d{1,2})\s+([a-zA-Z]+)\s+(\d{4})/)
+                  const m = v.match(/\w+,\s+(\d+)\s+(\w+)\s+(\d{4})/)
                   if (!m) return v.slice(0, 7)
-                  // m[1] = Day, m[2] = Month, m[3] = Year
-                  return `${m[1]} ${m[2].slice(0, 3)} ${m[3]}`
-                  
+                  return `${m[1]} ${m[2].slice(0,3)} ${m[3]}`
                 }}
                 interval={Math.floor(data.length / 6)}
                 angle={-35}
